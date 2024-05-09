@@ -28,6 +28,9 @@ public class TodoController : ControllerBase
     public IActionResult GetTodo(Guid id)
     {
         var todo = _service.GetTodo(id);
+
+        if (todo == null) return NotFound("Cannot found todo");
+
         return Ok(todo);
     }
 

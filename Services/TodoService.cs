@@ -11,9 +11,10 @@ public class TodoService : ITodoService
         _todos.Add(todo.Id, todo);
     }
 
-    public Todo GetTodo(Guid id)
+    public Todo? GetTodo(Guid id)
     {
-        return _todos[id];
+        _todos.TryGetValue(id, out Todo? todo);
+        return todo;
     }
 
     public Todo[] GetAllTodos()
